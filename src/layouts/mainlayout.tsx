@@ -3,6 +3,12 @@ import { useState } from "react";
 import AboutSection from "@/components/sections/about-section";
 import ExperienceSection from "@/components/sections/experience-section";
 import SkillsSection from "@/components/sections/skills-section";
+import ProjectsSection from "@/components/sections/projects-section";
+import EducationSection from "@/components/sections/education-section";
+import CertificationsSection from "@/components/sections/certifications-section";
+import ExtracurricularSection from "@/components/sections/extracurricular-section";
+import ResumeSection from "@/components/sections/resume-section";
+import ContactSection from "@/components/sections/contact-section";
 import { cn } from "@/lib/utils";
 
 export default function MainLayout() {
@@ -12,9 +18,11 @@ export default function MainLayout() {
     "Skills",
     "Experience",
     "Projects",
+    "Education",
     "Certifications",
-    "Contact",
+    "Extracurricular",
     "Resume",
+    "Contact",
   ];
 
   const floatingDots = [
@@ -202,6 +210,12 @@ export default function MainLayout() {
         <AboutSection />
         <SkillsSection />
         <ExperienceSection />
+        <ProjectsSection />
+        <EducationSection />
+        <CertificationsSection />
+        <ExtracurricularSection />
+        <ResumeSection />
+        <ContactSection />
       </main>
 
       <style>{`

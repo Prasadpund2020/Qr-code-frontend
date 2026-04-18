@@ -5,19 +5,19 @@ const skillGroups = [
     title: "Frontend",
     description:
       "Building responsive interfaces with a strong focus on clarity, performance, and polished interactions.",
-    skills: ["React", "TypeScript", "Tailwind CSS", "JavaScript", "HTML5"],
+    skills: ["React.JS", "Next.JS", "JavaScript", "HTML", "CSS"],
   },
   {
-    title: "Backend",
+    title: "Backend & DB",
     description:
       "Designing APIs and application logic that stay maintainable, dependable, and easy to extend.",
-    skills: ["Node.js", "Express", "REST APIs", "MongoDB", "SQL"],
+    skills: ["Node.JS", "ExpressJS", "MongoDB", "Python", "Java"],
   },
   {
-    title: "Tools",
+    title: "Tools & Testing",
     description:
       "Using practical tools and workflows that keep development smooth from local builds to deployment.",
-    skills: ["Git", "GitHub", "Vite", "Postman", "Figma"],
+    skills: ["Git", "GitHub", "Cypress", "Postman", "VS Code", "IntelliJ IDEA"],
   },
 ];
 
@@ -37,14 +37,14 @@ export default function SkillsSection() {
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               {[
-                "React",
-                "TypeScript",
-                "Node.js",
-                "Express",
+                "React.JS",
+                "Next.JS",
+                "Node.JS",
+                "ExpressJS",
                 "MongoDB",
-                "Tailwind CSS",
-                "Git",
-                "REST APIs",
+                "Python",
+                "Java",
+                "Cypress",
               ].map((skill) => (
                 <span
                   key={skill}

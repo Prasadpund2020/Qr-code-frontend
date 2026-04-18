@@ -2,39 +2,27 @@ import SectionShell from "./section-shell";
 
 const experiences = [
   {
-    period: "2024 - Present",
-    role: "Full Stack Developer",
-    company: "Freelance / Personal Projects",
+    period: "6 Months · Current",
+    role: "Software Developer Intern (Full Stack)",
+    company: "AI Alpha Tech",
     summary:
-      "Building responsive web apps and portfolio-driven products with a focus on polished frontend work and dependable backend logic.",
+      "Collaborating with team members on full-stack development projects, contributing to both frontend and backend development tasks.",
     highlights: [
-      "Created modern interfaces using React, TypeScript, and Tailwind CSS.",
-      "Integrated APIs and structured reusable components for faster iteration.",
-      "Improved visual consistency, responsiveness, and overall user experience.",
+      "Building responsive UIs and integrating REST APIs using React and Node.js.",
+      "Contributing to backend features with Express.js and MongoDB.",
+      "Collaborating in an Agile team environment on production-level features.",
     ],
   },
   {
-    period: "2023 - 2024",
-    role: "Frontend Developer",
-    company: "Project-Based Learning",
+    period: "2 Months",
+    role: "Frontend Developer Intern",
+    company: "Startup 0 KM",
     summary:
-      "Strengthened UI engineering fundamentals by translating designs into responsive layouts and interactive experiences.",
+      "Developed and maintained responsive user interfaces, ensuring seamless user experience across various devices and browsers.",
     highlights: [
-      "Built reusable UI sections and responsive navigation patterns.",
-      "Worked with animations, state handling, and component-based architecture.",
-      "Focused on clean implementation and maintainable styling systems.",
-    ],
-  },
-  {
-    period: "2022 - 2023",
-    role: "Developer Journey",
-    company: "Self-Driven Practice",
-    summary:
-      "Developed core programming and web development skills through consistent hands-on practice and real project experimentation.",
-    highlights: [
-      "Learned the foundations of JavaScript, HTML, CSS, and Git.",
-      "Practiced solving real UI and logic problems through mini projects.",
-      "Built confidence in shipping complete ideas from scratch.",
+      "Built pixel-perfect responsive layouts from Figma designs.",
+      "Ensured cross-browser and cross-device UI consistency.",
+      "Optimised component re-renders and improved page load performance.",
     ],
   },
 ];
@@ -94,10 +82,10 @@ export default function ExperienceSection() {
             </p>
             <div className="mt-5 grid grid-cols-2 gap-4">
               {[
-                { label: "Projects Built", value: "12+" },
+                { label: "Internships", value: "2" },
                 { label: "Core Stack", value: "MERN" },
-                { label: "UI Focus", value: "Strong" },
-                { label: "Learning Mode", value: "Active" },
+                { label: "Experience", value: "8mo+" },
+                { label: "Mode", value: "Active" },
               ].map((item) => (
                 <div
                   key={item.label}
