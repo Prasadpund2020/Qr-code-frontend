@@ -187,13 +187,13 @@ export default function MainLayout() {
               </div>
             </div>
 
-            <div className="flex max-w-full flex-row flex-wrap items-center justify-end gap-2">
+            <div className="flex max-w-full flex-row flex-nowrap items-center justify-end gap-1 overflow-x-auto lg:gap-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {navItems.map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
                   className={cn(
-                    "group relative overflow-hidden rounded-full border border-emerald-300/12 px-4 py-2.5 text-center text-sm font-medium text-emerald-100/78 transition-all duration-300",
+                    "group relative overflow-hidden whitespace-nowrap rounded-full border border-emerald-300/12 px-3 py-2 text-center text-[13px] font-medium text-emerald-100/78 transition-all duration-300 lg:px-4 lg:py-2.5 lg:text-sm",
                     "bg-white/[0.03] hover:border-emerald-300/30 hover:bg-emerald-300/[0.08] hover:text-emerald-50",
                   )}
                 >
