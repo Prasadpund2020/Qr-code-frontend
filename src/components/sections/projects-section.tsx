@@ -15,6 +15,10 @@ const projects = [
   {
     name: "Dynamic Invoice Generator",
     stack: ["Next.JS", "Node.JS", "MongoDB", "Express.JS"],
+    image: "/assets/invoice.png",
+    websiteUrl:
+      "https://invoice-kp69s8pdm-prasadpund2020s-projects.vercel.app/",
+    websiteLabel: "Visit Website",
     description:
       "Built a dynamic invoice generation system with customisable templates and automated billing features.",
     highlights: [
@@ -50,6 +54,17 @@ export default function ProjectsSection() {
             key={project.name}
             className="group relative flex flex-col gap-5 rounded-[1.75rem] border border-emerald-300/12 bg-[linear-gradient(180deg,rgba(8,30,21,0.55),rgba(3,15,10,0.42))] p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:border-emerald-300/30 hover:bg-[linear-gradient(180deg,rgba(10,38,26,0.65),rgba(4,18,12,0.5))] hover:shadow-[0_15px_40px_-15px_rgba(34,197,94,0.15)]"
           >
+            {project.image ? (
+              <div className="relative overflow-hidden rounded-[1.25rem] border border-emerald-300/12 bg-black/20">
+                <img
+                  src={project.image}
+                  alt={`${project.name} preview`}
+                  className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#03110b]/35 via-transparent to-transparent" />
+              </div>
+            ) : null}
+
             {/* Index badge */}
             <div className="flex items-start justify-between">
               <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-emerald-300/20 bg-emerald-400/10 text-xs font-semibold text-emerald-300 transition-colors duration-300 group-hover:border-emerald-300/40 group-hover:bg-emerald-400/20">
@@ -92,9 +107,22 @@ export default function ProjectsSection() {
               ))}
             </div>
 
+            {project.websiteUrl ? (
+              <a
+                href={project.websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${project.websiteLabel} for ${project.name}`}
+                className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-100 transition-colors duration-300 hover:border-emerald-300/45 hover:bg-emerald-400/20 hover:text-emerald-50"
+              >
+                {project.websiteLabel}
+                <span aria-hidden="true">-&gt;</span>
+              </a>
+            ) : null}
+
             {/* Subtle bottom glow line */}
             <div className="pointer-events-none absolute inset-x-6 bottom-0 h-px bg-gradient-to-r from-transparent via-emerald-300/18 to-transparent transition-opacity duration-300 group-hover:opacity-100 opacity-60" />
-            
+
             {/* Top glow pulse on hover */}
             <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-[1px] w-1/3 bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
           </article>
