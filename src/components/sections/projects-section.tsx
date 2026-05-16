@@ -48,18 +48,18 @@ export default function ProjectsSection() {
         {projects.map((project, idx) => (
           <article
             key={project.name}
-            className="relative flex flex-col gap-5 rounded-[1.75rem] border border-emerald-300/12 bg-[linear-gradient(180deg,rgba(8,30,21,0.55),rgba(3,15,10,0.42))] p-5 sm:p-6"
+            className="group relative flex flex-col gap-5 rounded-[1.75rem] border border-emerald-300/12 bg-[linear-gradient(180deg,rgba(8,30,21,0.55),rgba(3,15,10,0.42))] p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:border-emerald-300/30 hover:bg-[linear-gradient(180deg,rgba(10,38,26,0.65),rgba(4,18,12,0.5))] hover:shadow-[0_15px_40px_-15px_rgba(34,197,94,0.15)]"
           >
             {/* Index badge */}
             <div className="flex items-start justify-between">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-emerald-300/20 bg-emerald-400/10 text-xs font-semibold text-emerald-300">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-emerald-300/20 bg-emerald-400/10 text-xs font-semibold text-emerald-300 transition-colors duration-300 group-hover:border-emerald-300/40 group-hover:bg-emerald-400/20">
                 {String(idx + 1).padStart(2, "0")}
               </span>
               <div className="flex flex-wrap justify-end gap-1.5">
                 {project.stack.map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-full border border-emerald-300/10 bg-white/[0.03] px-2.5 py-1 text-[10px] font-medium tracking-[0.12em] text-emerald-100/70"
+                    className="rounded-full border border-emerald-300/10 bg-white/[0.03] px-2.5 py-1 text-[10px] font-medium tracking-[0.12em] text-emerald-100/70 transition-colors duration-300 group-hover:border-emerald-300/20 group-hover:bg-white/[0.05]"
                   >
                     {tech}
                   </span>
@@ -69,10 +69,10 @@ export default function ProjectsSection() {
 
             {/* Title & description */}
             <div>
-              <h3 className="text-xl font-semibold text-emerald-50">
+              <h3 className="text-xl font-semibold text-emerald-50 transition-colors duration-300 group-hover:text-emerald-300">
                 {project.name}
               </h3>
-              <p className="mt-2 text-sm leading-7 text-emerald-50/70">
+              <p className="mt-2 text-sm leading-7 text-emerald-50/70 group-hover:text-emerald-50/85 transition-colors duration-300">
                 {project.description}
               </p>
             </div>
@@ -82,10 +82,10 @@ export default function ProjectsSection() {
               {project.highlights.map((highlight) => (
                 <div
                   key={highlight}
-                  className="flex gap-3 rounded-2xl border border-emerald-300/10 bg-black/10 px-4 py-3"
+                  className="flex gap-3 rounded-2xl border border-emerald-300/10 bg-black/10 px-4 py-3 transition-colors duration-300 group-hover:border-emerald-300/20 group-hover:bg-black/20"
                 >
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-300/80" />
-                  <p className="text-xs leading-6 text-emerald-100/75">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-300/80 transition-transform duration-300 group-hover:scale-125" />
+                  <p className="text-xs leading-6 text-emerald-100/75 group-hover:text-emerald-100/90 transition-colors duration-300">
                     {highlight}
                   </p>
                 </div>
@@ -93,7 +93,10 @@ export default function ProjectsSection() {
             </div>
 
             {/* Subtle bottom glow line */}
-            <div className="pointer-events-none absolute inset-x-6 bottom-0 h-px bg-gradient-to-r from-transparent via-emerald-300/18 to-transparent" />
+            <div className="pointer-events-none absolute inset-x-6 bottom-0 h-px bg-gradient-to-r from-transparent via-emerald-300/18 to-transparent transition-opacity duration-300 group-hover:opacity-100 opacity-60" />
+            
+            {/* Top glow pulse on hover */}
+            <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-[1px] w-1/3 bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
           </article>
         ))}
       </div>

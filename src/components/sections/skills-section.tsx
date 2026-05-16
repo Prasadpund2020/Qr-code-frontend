@@ -1,4 +1,6 @@
 import SectionShell from "./section-shell";
+import { motion, useInView } from "motion/react";
+import { useRef } from "react";
 
 const skillGroups = [
   {
@@ -22,6 +24,17 @@ const skillGroups = [
 ];
 
 export default function SkillsSection() {
+  const barsRef = useRef<HTMLDivElement>(null);
+  // `once: true` + `amount: 0.5` fires ONLY when the element is 50% in the real viewport
+  const barsInView = useInView(barsRef, { amount: 0.5 });
+
+  const bars = [
+    { label: "UI Development", value: 92 },
+    { label: "API Integration", value: 88 },
+    { label: "Backend Logic",   value: 84 },
+    { label: "Problem Solving", value: 90 },
+  ];
+
   return (
     <SectionShell
       id="skills"
@@ -31,7 +44,7 @@ export default function SkillsSection() {
     >
       <div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr] lg:gap-6">
         <div className="space-y-5">
-          <div className="rounded-[1.75rem] border border-emerald-300/12 bg-[linear-gradient(180deg,rgba(8,30,21,0.55),rgba(3,15,10,0.42))] p-5 sm:p-6">
+          <div className="rounded-[1.75rem] border border-emerald-300/12 bg-[linear-gradient(180deg,rgba(8,30,21,0.55),rgba(3,15,10,0.42))] p-5 sm:p-6 transition-colors duration-300 hover:border-emerald-300/20">
             <p className="text-[11px] uppercase tracking-[0.35em] text-emerald-200/45">
               Core Stack
             </p>
@@ -48,7 +61,7 @@ export default function SkillsSection() {
               ].map((skill) => (
                 <span
                   key={skill}
-                  className="rounded-full border border-emerald-300/14 bg-emerald-400/[0.06] px-4 py-2 text-sm font-medium text-emerald-50/88"
+                  className="rounded-full border border-emerald-300/14 bg-emerald-400/[0.06] px-4 py-2 text-sm font-medium text-emerald-50/88 transition-colors duration-300 hover:border-emerald-300/30 hover:bg-emerald-400/10 hover:text-emerald-50 cursor-pointer"
                 >
                   {skill}
                 </span>
@@ -60,19 +73,20 @@ export default function SkillsSection() {
             {skillGroups.map((group) => (
               <article
                 key={group.title}
-                className="rounded-[1.5rem] border border-emerald-300/12 bg-black/10 p-5"
+                className="group relative rounded-[1.5rem] border border-emerald-300/12 bg-black/10 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300/30 hover:bg-emerald-900/10 hover:shadow-[0_10px_30px_-10px_rgba(34,197,94,0.12)]"
               >
-                <p className="text-sm uppercase tracking-[0.3em] text-emerald-200/45">
+                <div className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/0 to-transparent opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:via-emerald-400/40" />
+                <p className="text-sm uppercase tracking-[0.3em] text-emerald-200/45 transition-colors duration-300 group-hover:text-emerald-200/60">
                   {group.title}
                 </p>
-                <p className="mt-3 text-sm leading-7 text-emerald-50/72">
+                <p className="mt-3 text-sm leading-7 text-emerald-50/72 group-hover:text-emerald-50/90 transition-colors duration-300">
                   {group.description}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {group.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="rounded-full border border-emerald-300/10 bg-white/[0.03] px-3 py-1.5 text-xs font-medium tracking-[0.12em] text-emerald-100/78"
+                      className="rounded-full border border-emerald-300/10 bg-white/[0.03] px-3 py-1.5 text-xs font-medium tracking-[0.12em] text-emerald-100/78 transition-colors duration-300 group-hover:border-emerald-300/20 group-hover:bg-white/[0.06] group-hover:text-emerald-50"
                     >
                       {skill}
                     </span>
@@ -83,48 +97,33 @@ export default function SkillsSection() {
           </div>
         </div>
 
-        <div className="rounded-[1.75rem] border border-emerald-300/12 bg-[linear-gradient(180deg,rgba(11,38,26,0.62),rgba(3,15,10,0.46))] p-5 sm:p-6">
+        <div className="group rounded-[1.75rem] border border-emerald-300/12 bg-[linear-gradient(180deg,rgba(11,38,26,0.62),rgba(3,15,10,0.46))] p-5 sm:p-6 transition-colors duration-300 hover:border-emerald-300/20">
           <p className="text-[11px] uppercase tracking-[0.35em] text-emerald-200/45">
             Working Style
           </p>
-          <div className="mt-5 space-y-4">
-            {[
-              {
-                label: "UI Development",
-                value: "92%",
-                width: "w-[92%]",
-              },
-              {
-                label: "API Integration",
-                value: "88%",
-                width: "w-[88%]",
-              },
-              {
-                label: "Backend Logic",
-                value: "84%",
-                width: "w-[84%]",
-              },
-              {
-                label: "Problem Solving",
-                value: "90%",
-                width: "w-[90%]",
-              },
-            ].map((item) => (
+
+          {/* Ref is placed on this container — useInView watches it precisely */}
+          <div ref={barsRef} className="mt-5 space-y-4">
+            {bars.map((item, idx) => (
               <div key={item.label} className="space-y-2">
                 <div className="flex items-center justify-between text-sm text-emerald-50/82">
                   <span>{item.label}</span>
-                  <span className="text-emerald-200/58">{item.value}</span>
+                  <span className="text-emerald-200/58 transition-colors duration-300 group-hover:text-emerald-200/80">
+                    {item.value}%
+                  </span>
                 </div>
-                <div className="h-2 rounded-full bg-white/[0.05]">
-                  <div
-                    className={`h-full rounded-full bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-200 shadow-[0_0_20px_rgba(52,211,153,0.28)] ${item.width}`}
+                <div className="h-2 rounded-full border border-emerald-900/40 bg-black/20 overflow-hidden">
+                  <motion.div
+                    animate={{ width: barsInView ? `${item.value}%` : "0%" }}
+                    transition={{ duration: 1, delay: idx * 0.12, ease: "easeOut" }}
+                    className="h-full rounded-full bg-gradient-to-r from-emerald-500 via-emerald-400 to-emerald-300 shadow-[0_0_12px_rgba(52,211,153,0.4)]"
                   />
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-6 rounded-[1.5rem] border border-emerald-300/10 bg-black/10 p-5">
+          <div className="mt-6 rounded-[1.5rem] border border-emerald-300/10 bg-black/10 p-5 transition-colors duration-300 hover:border-emerald-300/20 hover:bg-black/20 cursor-default">
             <p className="text-sm uppercase tracking-[0.3em] text-emerald-200/45">
               Focus
             </p>
